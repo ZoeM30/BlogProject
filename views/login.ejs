@@ -1,0 +1,21 @@
+<%- include('shared/header.ejs') %> <%- include('shared/nav.ejs') %>
+<h2>LogIn</h2>
+<main>
+  <form action="loginprocess" method="post" class="loginform">
+    <div class="logininfo">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" />
+    </div>
+    <div class="logininfo">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" />
+    </div>
+    <div>
+      <button type="submit" class="loginbutton">LogIn</button>
+    </div>
+    <p class="error">
+      <% if(typeof(error)!='undefined'){ %> <%= error %> <% } %>
+    </p>
+  </form>
+</main>
+<%- include('shared/footer.ejs') %>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script
+      src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"
+      referrerpolicy="origin"
+    ></script>
+
+    <script>
+      tinymce.init({
+        selector: "#content",
+        forced_root_block: false,
+      });
+    </script>
+    <style>
+      *{
+        font-family: sans-serif;
+      }
+      .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  margin-left: 25px;
+}
+.form-group label {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+  padding: 10px;
+  font-size: 16px;
+  border: solid 2px #001858;
+  border-radius: 5px;
+}
+.btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-left: 25px;
+}
+
+.btn-primary {
+  background-color: #0e172c;
+  color: #fef6e4;
+  border-radius: 5px;
+  border: none;
+  font-weight: 600;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: #fef6e4;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+}
+    </style>
+    <title>Blog</title>
+  </head>
+  <body
+    style="background-color: #f3d2c1; color: #001858; font-family: sans-serif"
+  >
+    <div class="container" style="width: 1400px; margin: 20px auto">
+      <header class="header">
+        <!-- <a href="/"><img src="..//public/logo.png" alt="logo" /></a> -->
+        <h1 style="padding-top: 15px;
+        padding-left: 25px;
+        font-size: 40px;
+        color: #556b2f;"">My Blog</h1>
+      </header>
+      <nav style=" margin-top: 30px; margin-left: 25px;">
+        <a style="text-decoration: none;
+        color: #fef6e4;
+        font-weight: 600;
+        line-height: 35px;
+        padding: 10px;
+        font-size: 24px;
+        background-color: #556b2f;
+        border-radius: 10px;" href="/admin">Home</a>
+        <a style="text-decoration: none;
+        color: #fef6e4;
+        font-weight: 600;
+        line-height: 35px;
+        padding: 10px;
+        font-size: 24px;
+        background-color: #556b2f;
+        border-radius: 10px;" href="/new">Create Blog</a>
+        <a style="text-decoration: none;
+        color: #fef6e4;
+        font-weight: 600;
+        line-height: 35px;
+        padding: 10px;
+        font-size: 24px;
+        background-color: #556b2f;
+        border-radius: 10px;" href="/logout">Log Out</a>
+      </nav>
+      <h2 style="margin-left: 25px;" class="mb-4">Edit Article</h2>
+
+      <form
+        action="/edit/<%= article.id %>?_method=PUT"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input
+            type="text"
+            value="<%= article.title %>"
+            name="title"
+            id="title"
+            class="form-control"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="image">Upload Photo: </label>
+          <input type="file" id="image" name="image" />
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea name="description" id="description" class="form-control">
+              <%= article.description %></textarea
+          >
+        </div>
+        <div class="form-group">
+          <label for="content">Content</label>
+          <textarea name="content" id="content" class="form-control" required>
+              <%= article.content %></textarea
+          >
+        </div>
+
+        <a href="/admin" class="btn btn-secondary">Cancel</a>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </form>
+    </div>
+  </body>
+</html>

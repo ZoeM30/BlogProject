@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <style>
+      nav {
+        margin-top: 30px;
+      }
+      nav a {
+        text-decoration: none;
+        color: #fef6e4;
+        font-weight: 600;
+        line-height: 35px;
+        padding: 10px;
+        font-size: 24px;
+        background-color: #556b2f;
+        border-radius: 10px;
+      }
+      h1 {
+        padding-top: 15px;
+        padding-left: 25px;
+        font-size: 40px;
+        color: #556b2f;
+      }
+    </style>
+    <title>Blog</title>
+  </head>
+  <body
+    style="background-color: #f3d2c1; color: #001858; font-family: sans-serif"
+  >
+    <div class="container" style="width: 1200px; margin: 20px auto">
+      <header class="header">
+        <h1>My Blog</h1>
+      </header>
+      <nav>
+        <a href="/admin">Home</a>
+        <a href="/new">Create Blog</a>
+        <a href="/logout">Log Out</a>
+      </nav>
+      <h2 style="font-size: 34px"><%= article.title %></h2>
+
+      <div style="margin-top: 30px; color: darkblue">
+        <%= article.createAt.toLocaleDateString() %>
+      </div>
+      <div>
+        <img
+          src="/uploads/<%= article.imageName%>"
+          alt="photo"
+          width="200px"
+          height="200px"
+        />
+      </div>
+      <div style="margin-top: 25px; font-size: 22px">
+        <%= article.description %>
+      </div>
+      <div
+        style="
+          margin-top: 30px;
+          padding-left: 10px;
+          font-size: 20px;
+          border-left: solid 5px #556b2f;
+          line-height: 1.5;
+        "
+      >
+        <%= article.content %>
+      </div>
+    </div>
+  </body>
+</html>

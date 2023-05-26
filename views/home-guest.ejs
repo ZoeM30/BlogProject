@@ -1,0 +1,21 @@
+
+
+      <%- include('shared/header.ejs') %>
+      <%- include('shared/nav.ejs') %>
+      
+      
+      <h2>All Articles</h2>
+
+      <% articles.forEach(article =>{ %>
+        <main class="card">  
+          <h4 class="card-title"><%= article.title %></h4>
+          <div class="card-subtitle">
+            <%= article.createAt.toLocaleDateString() %>
+          </div>
+
+          <div class="card-text"><%= article.description %></div>
+          <a href="/guest/<%= article.id %>" class="readmore1"
+            >Read More</a>
+          </main>
+      <% }) %>
+  <%- include('shared/footer.ejs') %>

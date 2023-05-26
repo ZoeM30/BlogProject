@@ -1,0 +1,22 @@
+<%- include('shared/header.ejs') %> <%- include('shared/nav-admin.ejs') %>
+<h2>All Blogs</h2>
+<% articles.forEach(article =>{ %>
+<main class="card">
+  <h4 class="card-title"><%= article.title %></h4>
+  <div class="card-subtitle"><%= article.createAt.toLocaleDateString() %></div>
+
+  <div class="card-text"><%= article.description %></div>
+  <nav class="buttons">
+    <a href="admin/<%= article.id %>" class="readmore">Read More</a>
+    <a href="/edit/<%= article.id %>" class="edit">Edit</a>
+
+    <form
+      action="/admin/<%= article.id %>?_method=DELETE"
+      method="POST"
+      class="delete"
+    >
+      <button type="submit" class="btnDelete">Delete</button>
+    </form>
+  </nav>
+</main>
+<% }) %> <%- include('shared/footer.ejs') %>
